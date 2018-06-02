@@ -28,10 +28,10 @@ section{overflow:hidden;}
 .daiyan_bg{position:absolute;left:0;top:0;z-index:-1;}
 .yan{width:3.7rem;height:1.34rem;margin:3.1rem auto 5.45rem;}
 .ad_logo{
-    width: 6.95rem;height: auto ;margin: 2rem 1rem ;
+    width: 6.95rem;height: auto ;margin: 1rem 1rem ;
 }
 .car_logo{
-    width: 6.04rem;height: auto ;margin: 1rem auto 1rem;
+    width: 6.04rem;height: auto ;margin: 0.5rem auto 0.5rem;
 }
 .promis_logo{
     width: 8.21rem;height: auto ;margin: 1.5rem auto 1rem;
@@ -85,6 +85,38 @@ section{overflow:hidden;}
     width: 100%;
     height: 100%;
     position: absolute;
+}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*width: 100%;*/
+    /*height: 50px;*/
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    top: 0px;
+    left: 0px;
+    z-index: 10001;
+    display:none;
+    filter:alpha(opacity=60);
+    background-color: #777;
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    text-align: center;
+    color: #000;
+    font-size: 0.5rem;
+    line-height: 1rem;
+
+}
+
+.overlay .text{
+    color: #000;
+    font-size: 0.5rem;
+    clear: both;
+    height: 240px;
+    top:50%;
+    position: relative;
+
 }
 .footer {
     position:absolute;left :0;bottom:0;

@@ -32,7 +32,7 @@
     </script>
     <link rel="stylesheet" href="css/daiyan.css?v1">
 </head>
-<body>
+<body onload="checkId()">
 <section class="page1">
     <div class="daiyan">
         <img src="images/bg_sky.jpg" alt="" class="daiyan_bg">
@@ -48,14 +48,13 @@
     </div>
 </section>
 </body>
-<script src="js/zepto.min.js"></script>
 <script>
-    Zepto(function($){
+     function checkId() {
         var mydate = new Date();
         var openid = "cms"+mydate.getDay()+ mydate.getHours()+ mydate.getMinutes()+mydate.getSeconds()+mydate.getMilliseconds();
         localStorage.setItem("openid", openid);
-        console.log("openid>>>>", openid);
-        $('#openid').val(openid);
-    })
+         console.log("openid>>>>", openid);
+         document.getElementById('openid').value = openid;
+    }
 </script>
 </html>

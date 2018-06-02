@@ -33,19 +33,23 @@
         <p><img src="images/car_logo.png" alt="" class="car_logo"></p>
         <p><img src="images/promis.png" alt="" class="promis_logo"></p>
         <div class="form_p">
-            <img src="images/qrcode.jpg" alt="" class="qrcode">
+            <img src="images/qr_logo.jpg" alt="" class="qrcode">
             <div class="name_label">我是 <?=$r_name ?></div>
             <div class="banner_label">传递爱心，我为自己代言</div>
         </div>
-        <img src="images/save.png" alt="" class="save_tip">
-
+    </div>
+<!--    <img src="images/save.png" alt="" class="save_tip">-->
+    <div  alt="" class="overlay">
+        <div class="text">
+        长按保存图片
+        </div>
     </div>
 </section>
 <section class="page3">
     <div class="daiyan daiyan2">
-        <img src="images/bg_sky.jpg" alt="" class="daiyan_bg" id="daiyan_bg1">
+        <img src="" alt="" class="daiyan_bg" id="daiyan_bg1">
     </div>
-    <img src="images/save.png" alt="" class="save_tip">
+<!--    <img src="images/save.png" alt="" class="save_tip">-->
 </section>
 </body>
 <script src="js/zepto.min.js"></script>
@@ -53,16 +57,15 @@
 <script>
     Zepto(function($){
         console.log(" domOnload  ");
+        var tipTop = this.height / 4 - 47;
+        $(".overlay").show();
         setTimeout(function(){
+            $(".overlay").hide();
             html2canvas(document.body).then(function(canvas) {
                 //document.body.appendChild(canvas);
                 document.getElementById("daiyan_bg1").src = canvas.toDataURL('image/jpeg');
                 $(".page1").hide().siblings(".page3").show();
-                var tipTop = this.height / 4 - 47;
-                $(".save_tip").show().css("top", tipTop);
-                setTimeout(function () {
-                    $(".save_tip").hide();
-                }, 3000);
+
             });
         }, 2000);
     });
