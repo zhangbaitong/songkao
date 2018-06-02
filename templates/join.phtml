@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>爱心传递</title>
+    <script>
+        var useragent = navigator.userAgent;
+        if (useragent.match(/MicroMessenger/i) != 'MicroMessenger') {
+            alert('已禁止本次访问：您必须使用微信内置浏览器访问本页面！');
+            var opened = window.open('about:blank', '_self');
+            opened.opener = null;
+            opened.close();
+        }
+        //计算根节点HTML的字体大小
+        function resizeRoot(width){
+            var deviceWidth = document.documentElement.clientWidth,
+                num = width,
+                num1 = num / 100;
+            if(deviceWidth > num){
+                deviceWidth = num;
+            }
+            document.documentElement.style.fontSize = deviceWidth / num1 + "px";
+        }
+        //根节点HTML的字体大小初始化
+        resizeRoot(1080);
+
+        window.onresize = function(){
+            resizeRoot(1080);
+        };
+    </script>
+    <link rel="stylesheet" href="css/daiyan.css?v1">
+</head>
+<body>
+<section class="page1">
+    <div class="daiyan">
+        <img src="images/bg_sky.jpg" alt="" class="daiyan_bg">
+        <p><img src="images/ad_logo.png" alt="" class="ad_logo"></p>
+        <p><img src="images/car_logo.png" alt="" class="car_logo"></p>
+        <p><img src="images/promis.png" alt="" class="promis_logo"></p>
+        <form class="join_form" action="/joinUser" method="get" >
+            请输入姓名：
+            <input type="text" name="r_name" class="pointtxt" class="save">
+            <input id="openid" type="hidden" name="openid">
+            <button type="submit" class="save" >立即参与</button>
+        </form>
+    </div>
+</section>
+</body>
+<script src="js/zepto.min.js"></script>
+<script>
+    Zepto(function($){
+        var mydate = new Date();
+        var openid = "cms"+mydate.getDay()+ mydate.getHours()+ mydate.getMinutes()+mydate.getSeconds()+mydate.getMilliseconds();
+        localStorage.setItem("openid", openid);
+        console.log("openid>>>>", openid);
+        $('#openid').val(openid);
+    })
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>爱心传递</title>
+    <script>
+        //计算根节点HTML的字体大小
+        function resizeRoot(width){
+            var deviceWidth = document.documentElement.clientWidth,
+                num = width,
+                num1 = num / 100;
+            if(deviceWidth > num){
+                deviceWidth = num;
+            }
+            document.documentElement.style.fontSize = deviceWidth / num1 + "px";
+        }
+        //根节点HTML的字体大小初始化
+        resizeRoot(1080);
+
+        window.onresize = function(){
+            resizeRoot(1080);
+        };
+    </script>
+    <link rel="stylesheet" href="css/daiyan.css">
+</head>
+<body>
+<section class="page1"  >
+    <div class="daiyan">
+        <img id="daiyan_bg" src="images/bg_sky.jpg" alt="" class="daiyan_bg">
+
+        <p><img src="images/ad_logo.png" alt="" class="ad_logo"></p>
+        <p><img src="images/car_logo.png" alt="" class="car_logo"></p>
+        <div class="form_p">
+            <img src="images/qrcode.jpg" alt="" class="qrcode">
+            <div class="name_label">我是 张三</div>
+            <div class="banner_label">传统爱心，我为自己代言</div>
+        </div>
+
+    </div>
+    <div class="footer"></div>
+
+</section>
+<section class="page3">
+    <div class="daiyan daiyan2">
+        <img src="images/bg_sky.jpg" alt="" class="daiyan_bg" id="daiyan_bg1">
+    </div>
+    <img src="images/save.png" alt="" class="save_tip">
+</section>
+
+<script src="js/zepto.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+</body>
+<script>
+    Zepto(function($){
+        html2canvas(document.body).then(function(canvas) {
+            document.body.appendChild(canvas);
+            document.getElementById("daiyan_bg1").src = canvas.toDataURL('image/jpeg');
+            $(".page1").hide().siblings(".page3").show();
+            var tipTop = this.height / 4 - 47;
+            $(".save_tip").show().css("top", tipTop);
+            setTimeout(function () {
+                $(".save_tip").hide();
+            }, 3000);
+        });
+        console.log(" domOnload  ");
+    });
+</script>
+</html>
