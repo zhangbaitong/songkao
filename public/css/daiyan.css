@@ -67,14 +67,17 @@ section{overflow:hidden;}
 
 }
 .join_form{
-    font-size:.5rem;
+    font-size:.6rem;
     display: block;
 }
-.join_form .pointtxt{width:30%;height:.75rem;line-height:.55rem;font-size:.5rem;color:#fff;font-family:Arial;background:none;border:0;}
-.pointtxt::-webkit-input-placeholder{color:#ccc;}
+.join_form .pointtxt{width:25%;height:.75rem;line-height:.55rem;font-size:.5rem;color:#fff;font-family:Arial;background:none;border:0;border-bottom: 1px solid #888;}
+.pointtxt::-webkit-input-placeholder{color:#888;}
+
 .join_form button.save{
-    width:3.5rem ;
+    width:3rem ;
     margin: 0.5rem 0px;
+    color: #ffffff;
+
     background:-webkit-linear-gradient(to right, #ff9a2e, #e9451e);
     background:linear-gradient(to right, #ff9a2e, #e9451e);
 }
