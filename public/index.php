@@ -11,7 +11,7 @@ if (PHP_SAPI == 'cli-server') {
 require __DIR__ . '/../vendor/autoload.php';
 date_default_timezone_set('PRC');
 session_start();
-$settings = require __DIR__ . '/../src/settings_dev.php';
+$settings = require __DIR__ . '/../src/settings.php';
 
 // Instantiate the app
 $app = new \Slim\App($settings);
