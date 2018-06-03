@@ -98,15 +98,17 @@ section{overflow:hidden;}
     left: 0px;
     z-index: 10001;
     display:none;
-    filter:alpha(opacity=60);
-    background-color: #777;
-    opacity: 0.5;
-    -moz-opacity: 0.5;
-    text-align: center;
+    background-color: #000000;
+    opacity: 0.8;
+    -moz-opacity: 0.8;
+    /*text-align: center;*/
     color: #000;
     font-size: 0.5rem;
-    line-height: 1rem;
+    /*line-height: 1rem;*/
 
+}
+.overlay img{
+    width: auto;
 }
 
 .overlay .text{

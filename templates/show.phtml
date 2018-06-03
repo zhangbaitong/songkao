@@ -7,11 +7,11 @@
     <title>爱心传递</title>
     <script>
         //计算根节点HTML的字体大小
-        function resizeRoot(width){
+        function resizeRoot(width) {
             var deviceWidth = document.documentElement.clientWidth,
                 num = width,
                 num1 = num / 100;
-            if(deviceWidth > num){
+            if (deviceWidth > num) {
                 deviceWidth = num;
             }
             document.documentElement.style.fontSize = deviceWidth / num1 + "px";
@@ -19,7 +19,7 @@
         //根节点HTML的字体大小初始化
         resizeRoot(1080);
 
-        window.onresize = function(){
+        window.onresize = function () {
             resizeRoot(1080);
         };
     </script>
@@ -28,44 +28,91 @@
 <body>
 <section class="page1">
     <div class="daiyan">
-        <img src="images/bg_sky.jpg" alt="" class="daiyan_bg">
+        <img id="daiyan_bg" src="http://songkao.oss-cn-shenzhen.aliyuncs.com/bg_sky.jpg" alt="" class="daiyan_bg">
         <p><img src="images/ad_logo.png" alt="" class="ad_logo"></p>
-        <p><img src="images/car_logo.png" alt="" class="car_logo"></p>
+        <p><img src="http://songkao.oss-cn-shenzhen.aliyuncs.com/car_logo.png" alt="" class="car_logo"></p>
         <p><img src="images/promis.png" alt="" class="promis_logo"></p>
         <div class="form_p">
             <img src="images/qr_logo.jpg" alt="" class="qrcode">
-            <div class="name_label">我是 <?=$r_name ?></div>
+            <div class="name_label">我是 <?= $r_name ?></div>
             <div class="banner_label">传递爱心，我为自己代言</div>
         </div>
     </div>
-<!--    <img src="images/save.png" alt="" class="save_tip">-->
-    <div  alt="" class="overlay">
-        <div class="text">
-        长按保存图片
+        <div  alt="" class="overlay">
+
+            <div style="position: absolute;width: 1px;
+            height: 1px;background-color: transparent;
+            transform-origin: 0% 0% 0px;transform: translate3d(0%, 0%, 0px) matrix(1, 0, 0, 1, 0, 0);">
+                <img src="images/bg_shade.png"
+                     style="position: absolute;transform-origin: 0% 0% 0px; width: 11rem;
+                     transform: translate3d(0%, 0%, 0px) matrix(1, 0, 0, 1, 0, 0);">
+                <img src="images/text_shade.png" style="position: absolute;width: 8.43rem;
+                transform-origin: 0% 0% 0px; transform: translate3d(0%, 0%, 0px) matrix(1, 0, 0, 1, 62, 105);">
+                <div style="position: absolute; width: 578px; height: 472px; background-color: transparent; cursor: pointer;
+                transform-origin: 0% 0% 0px; transform: translate3d(0%, 0%, 0px) matrix(1, 0, 0, 0.813559, 36, 24);">
+
+                </div>
+            </div>
+
         </div>
-    </div>
 </section>
 <section class="page3">
     <div class="daiyan daiyan2">
         <img src="" alt="" class="daiyan_bg" id="daiyan_bg1">
     </div>
-<!--    <img src="images/save.png" alt="" class="save_tip">-->
+    <!--    <img src="images/save.png" alt="" class="save_tip">-->
 </section>
 </body>
-<script src="js/zepto.min.js"></script>
-<script src="js/html2canvas.min.js"></script>
+<script src="http://songkao.oss-cn-shenzhen.aliyuncs.com/zepto.min.js"></script>
+<script src="http://songkao.oss-cn-shenzhen.aliyuncs.com/html2canvas.min.js"></script>
 <script>
-    Zepto(function($){
+    Zepto(function ($) {
         console.log(" domOnload  ");
-        var tipTop = this.height / 4 - 47;
-        $(".overlay").show();
-        setTimeout(function(){
+        $('.overlay').on("click", function (event) {
             $(".overlay").hide();
-            html2canvas(document.body).then(function(canvas) {
+
+        });
+        $(".overlay").show();
+        function getBase64Image(img) {
+            img.crossOrigin = 'Anonymous';
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+            var ext = img.src.substring(img.src.lastIndexOf(".")+1).toLowerCase();
+            var dataURL = canvas.toDataURL("image/jpeg");
+            return dataURL;
+
+        }
+
+        //递归将要转换的节点中的所有图片的src全部转为base64
+//        var s = 0;
+//        image2base64(s);
+//        function image2base64() {
+//            var image = new Image();
+//            image.src = $(".share_b img").eq(s).attr('src');
+//            console.log(image.src);
+//            image.onload = function() {
+//                var base64 = getBase64Image(image);
+//                $(".share_b img").eq(s).attr('src', base64);
+//                s++;
+//                if (s < $(".share_b img").length) {
+//                    image2base64();
+//                }
+//            }
+//        }
+        setTimeout(function () {
+//            $(".overlay").hide();
+           var base64 =  getBase64Image(document.getElementById("daiyan_bg"));
+//            $("#daiyan_bg").attr('src', base64);
+            document.getElementById("daiyan_bg").scr = base64;
+            html2canvas(document.body).then(function (canvas) {
                 //document.body.appendChild(canvas);
+
                 document.getElementById("daiyan_bg1").src = canvas.toDataURL('image/jpeg');
                 $(".page1").hide().siblings(".page3").show();
-
+//
             });
         }, 2000);
     });
